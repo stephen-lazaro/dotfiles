@@ -31,3 +31,4 @@ cargo install sn
 cargo install tokei
 cargo install ripgrep
 cargo install cargo-wa
+cargo install pijul
