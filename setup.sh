@@ -34,3 +34,10 @@ cargo install ripgrep
 cargo install cargo-wa
 cargo install pijul
 cabal install ShellCheck
+
+# Obtain Carp
+git clone git@github.com:carp-lang/Carp.git
+cd Carp
+stack build
+stack install
+cd ..

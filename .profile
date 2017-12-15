@@ -19,6 +19,12 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Add yarn
 export PATH="$HOME/.yarn/bin:$PATH"
 
+# Add Stack installed items
+export PATH=~/.local/bin:$PATH
+# Export Carp directory
+export CARP_DIR=~/Carp/
+
+
 
 alias ls='ls -GFh'
 alias dmlTS='date +%Y%m%d%H%M%S'
