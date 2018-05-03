@@ -7,29 +7,30 @@
 set nocompatible "No clue, does something
 
 call plug#begin()
-Plug 'ensime/ensime-vim'                " Ensime/Scala functionality for vim
-Plug 'derekwyatt/vim-scala'             " Vim Scala stuff
-Plug 'ctrlpvim/ctrlp.vim'               " True fuzzy find.  The greatest thing ever for us lazy folk.
-Plug 'editorconfig/editorconfig-vim'    " Maintain consistent coding styles between different editors and IDEs.
-Plug 'flazz/vim-colorschemes'           " All the colorschemes money can buy
-Plug 'pangloss/vim-javascript'          " Adds some javascript nicities.
-Plug 'Raimondi/delimitMate'             " Provides auto closing of parens, braces, and brackets in insert mode.
-Plug 'scrooloose/nerdtree'              " A vim explorer replacement.  Much nicer and easier to use.
-Plug 'w0rp/ale'                         " Asynchronous error checking as of ViM 8
-Plug 'tpope/vim-commentary'             " Easier comment support in vim.  Comment out blocks with gcc.
-Plug 'tpope/vim-dispatch'               " Terminal in your vim.  Works best with tmux.
-Plug 'tpope/vim-fugitive'               " Git support in vim.  Incredible handy for merge conflicts.
-Plug 'tpope/vim-sensible'               " A universal set of defaults that (hopefully) everyone can agree on.
-Plug 'tpope/vim-unimpaired'             " Provides some nice key mappings
-Plug 'vim-airline/vim-airline'          " Adds a gorgeous toolbar with useful info to bottom of vim.
-Plug 'vim-airline/vim-airline-themes'   " Airline themes.  Self explanatory
-Plug 'vim-scripts/LargeFile'            " Large files support
-Plug 'rust-lang/rust.vim'               " Rust support
-Plug 'racer-rust/vim-racer'             " Racer for Rust
-Plug 'idris-hackers/idris-vim'          " Idris support
-Plug 'rizzatti/dash.vim'                " Dash integration
-Plug 'vim-pandoc/vim-pandoc'            " Pandoc integration
-Plug 'vim-pandoc/vim-pandoc-syntax'     " Pandoc syntax
+Plug 'derekwyatt/vim-scala'               " Vim Scala stuff
+Plug 'ctrlpvim/ctrlp.vim'                 " True fuzzy find.  The greatest thing ever for us lazy folk.
+Plug 'editorconfig/editorconfig-vim'      " Maintain consistent coding styles between different editors and IDEs.
+Plug 'flazz/vim-colorschemes'             " All the colorschemes money can buy
+Plug 'pangloss/vim-javascript'            " Adds some javascript nicities.
+Plug 'Raimondi/delimitMate'               " Provides auto closing of parens, braces, and brackets in insert mode.
+Plug 'scrooloose/nerdtree'                " A vim explorer replacement.  Much nicer and easier to use.
+Plug 'w0rp/ale'                           " Asynchronous error checking as of ViM 8
+Plug 'tpope/vim-commentary'               " Easier comment support in vim.  Comment out blocks with gcc.
+Plug 'tpope/vim-dispatch'                 " Terminal in your vim.  Works best with tmux.
+Plug 'tpope/vim-fugitive'                 " Git support in vim.  Incredible handy for merge conflicts.
+Plug 'tpope/vim-sensible'                 " A universal set of defaults that (hopefully) everyone can agree on.
+Plug 'tpope/vim-unimpaired'               " Provides some nice key mappings
+Plug 'vim-airline/vim-airline'            " Adds a gorgeous toolbar with useful info to bottom of vim.
+Plug 'vim-airline/vim-airline-themes'     " Airline themes.  Self explanatory
+Plug 'vim-scripts/LargeFile'              " Large files support
+Plug 'rust-lang/rust.vim'                 " Rust support
+Plug 'racer-rust/vim-racer'               " Racer for Rust
+Plug 'idris-hackers/idris-vim'            " Idris support
+Plug 'rizzatti/dash.vim'                  " Dash integration
+Plug 'vim-pandoc/vim-pandoc'              " Pandoc integration
+Plug 'vim-pandoc/vim-pandoc-syntax'       " Pandoc syntax
+Plug 'junegunn/goyo.vim'                  " Goyo writing mode
+Plug 'purescript-contrib/purescript-vim'  " Purescript support
 call plug#end()
 " }}
 
@@ -73,7 +74,6 @@ let NERDTreeShowHidden=1
 " }}
 
 " Scala {{
-autocmd BufWritePost *.scala silent :EnTypeCheck
 nnoremap <localleader>t :EnTypeCheck<CR>
 au FileType scala nnoremap <localleader>df :EnDeclarationSplit<CR>
 " }}
@@ -116,7 +116,7 @@ let g:ctrlp_show_hidden = 0
 " }}}
 "
 " Kill trailing white space {{{
-autocmd FileType scala,rs,js autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd FileType scala,rust,javascript autocmd BufWritePre <buffer> %s/\s\+$//e
 " }}}
 "
 "
@@ -177,4 +177,16 @@ autocmd FileType scala,rs,js autocmd BufWritePre <buffer> %s/\s\+$//e
 " THINGS TO CONSIDER:
 " - This doesn't help if you want a visual list of tags
 
+" }}}
+"
+"
+" No swap garbage
+" {{{
+set undofile
+set backup
+set noswapfile
+
+set undodir=~/.vim/tmp/undo//     " undo files
+set backupdir=~/.vim/tmp/backup// " backups
+set directory=~/.vim/tmp/swap//   " swap files
 " }}}
