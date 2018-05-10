@@ -31,6 +31,7 @@ Plug 'vim-pandoc/vim-pandoc'              " Pandoc integration
 Plug 'vim-pandoc/vim-pandoc-syntax'       " Pandoc syntax
 Plug 'junegunn/goyo.vim'                  " Goyo writing mode
 Plug 'purescript-contrib/purescript-vim'  " Purescript support
+Plug 'jakwings/vim-pony'                  " Pony support
 call plug#end()
 " }}
 

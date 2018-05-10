@@ -53,3 +53,6 @@ cd Carp
 stack build
 stack install
 cd ..
+
+
+git config --global user.email stephen.lazaro@gmail.com
