@@ -32,6 +32,10 @@ Plug 'vim-pandoc/vim-pandoc-syntax'       " Pandoc syntax
 Plug 'junegunn/goyo.vim'                  " Goyo writing mode
 Plug 'purescript-contrib/purescript-vim'  " Purescript support
 Plug 'jakwings/vim-pony'                  " Pony support
+Plug 'derekelkins/agda-vim'               " Agda support
+Plug 'the-lambda-church/coquille'         " Coq support
+Plug 'flowtype/vim-flow'                  " Flow support
+Plug 'natebosch/vim-lsc'                  " Language Server support
 call plug#end()
 " }}
 
@@ -117,7 +121,7 @@ let g:ctrlp_show_hidden = 0
 " }}}
 "
 " Kill trailing white space {{{
-autocmd FileType scala,rust,javascript autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd FileType haskell,idris,scala,rust,javascript autocmd BufWritePre <buffer> %s/\s\+$//e
 " }}}
 "
 "
@@ -191,3 +195,16 @@ set undodir=~/.vim/tmp/undo//     " undo files
 set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files
 " }}}
+"
+"
+" LSC setup
+let g:lsc_enable_autocomplete = v:false
+let g:lsc_server_commands = {
+  \ 'scala': 'metals-vim',
+  \ 'rust': 'rls'
+  \}
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': 'gd',
+    \}
+
+au BufRead,BufNewFile *.sbt set filetype=scala
